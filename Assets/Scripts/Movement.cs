@@ -52,11 +52,12 @@ public class Movement : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            print("fdjslkfjakfj");
+            //print("fdjslkfjakfj");
             moveDirection.y = JumpSpeed * Time.deltaTime;
             anim.SetFloat("Jump4Blend", 1);
             rb.AddForce(0, 3, 0);
         }
+        else anim.SetFloat("Jump4Blend", 0);
         
         if (moveDirection != Vector3.zero)
             transform.TransformDirection(Vector3.forward);
