@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\ashpi\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\ashpi\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_b3.1017252901.00" t="ExcludeRecursive" />
+    <e p="C:\Users\ashpi\OneDrive\Documents\College\Character Animation\Assignment 3 All\b3" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Editor" t="Include">
+          <e p="Curves" t="Include">
+            <e p="BezierSplineInspector.cs" t="Include" />
+            <e p="CatmullRomInspector.cs" t="Include" />
+            <e p="CubicBezierCurveInspector.cs" t="Include" />
+            <e p="LineInspector.cs" t="Include" />
+            <e p="QuadBezierCurveInspector.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="CameraMover.cs" t="Include" />
+          <e p="ClickToMove.cs" t="Include" />
+          <e p="Curves" t="Include">
+            <e p="BezierSpline.cs" t="Include" />
+            <e p="CatmullRomSpline.cs" t="Include" />
+            <e p="CubicBezierCurve.cs" t="Include" />
+            <e p="CurveAnimator" t="Include">
+              <e p="CurveAnimator.cs" t="Include" />
+            </e>
+            <e p="ICurve.cs" t="Include" />
+            <e p="Line.cs" t="Include" />
+            <e p="QuadBezierCurve.cs" t="Include" />
+          </e>
+          <e p="DirectorScript.cs" t="Include" />
+          <e p="LocomotionSimpleAgent.cs" t="Include" />
+          <e p="LookAt.cs" t="Include" />
+          <e p="Movement.cs" t="Include" />
+        </e>
+        <e p="Standard Assets" t="Include">
+          <e p="Environment" t="Include">
+            <e p="Water" t="Include">
+              <e p="Water" t="Include">
+                <e p="Scripts" t="Include">
+                  <e p="Displace.cs" t="Include" />
+                  <e p="GerstnerDisplace.cs" t="Include" />
+                  <e p="MeshContainer.cs" t="Include" />
+                  <e p="PlanarReflection.cs" t="Include" />
+                  <e p="SpecularLighting.cs" t="Include" />
+                  <e p="Water.cs" t="Include" />
+                  <e p="WaterBase.cs" t="Include" />
+                  <e p="WaterTile.cs" t="Include" />
+                </e>
+                <e p="Shaders" t="Include">
+                  <e p="FXWaterPro.shader" t="Include" />
+                </e>
+              </e>
+              <e p="Water4" t="Include">
+                <e p="Shaders" t="Include">
+                  <e p="FXWater4Advanced.shader" t="Include" />
+                  <e p="FXWater4Simple.shader" t="Include" />
+                  <e p="WaterInclude.cginc" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="Water (Basic)" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="WaterBasic.cs" t="Include" />
+              </e>
+              <e p="Shaders" t="Include">
+                <e p="FXWaterBasic.shader" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="b3.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
