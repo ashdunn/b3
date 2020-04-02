@@ -58,44 +58,7 @@ public class LocomotionSimpleAgent : MonoBehaviour
             {
                 anim.SetFloat("Jump4Blend", 0);
             }
-        /*
-        if (agent.isOnOffMeshLink)
-        {
-            if (!_traversingLink)
-            {
-                //This is done only once. The animation's progress will determine link traversal.
-                GetComponent<Animation>().CrossFade("M_Jump_Walking", 0.1f, PlayMode.StopAll);
-                //cache current link
-                _currLink = agent.currentOffMeshLinkData;
-                //start traversing
-                _traversingLink = true;
-            }
 
-            //lerp from link start to link end in time to animation
-            Vector3 tlerp = GetComponent<Animation>()["M_Jump_Walking"].normalizedTime;
-            //straight line from startlink to endlink
-            Vector3 newPos = Vector3.Lerp(_currLink.startPos, _currLink.endPos, tlerp);
-            //add the 'hop'
-            newPos.y += 2f * Mathf.Sin(Mathf.PI * tlerp);
-            //Update transform position
-            transform.position = newPos;
-
-            // when the animation is stopped, we've reached the other side. Don't use looping animations with this control setup
-            if (!GetComponent<Animation>().isPlaying)
-            {
-                //make sure the player is right on the end link
-                transform.position = _currLink.endPos;
-                //internal logic reset
-                _traversingLink = false;
-                //Tell unity we have traversed the link
-                agent.CompleteOffMeshLink();
-                //Resume normal navmesh behaviour
-                agent.Resume();
-            }
-        }
-
-        else
-        {*/
         Vector3 worldDeltaPosition = agent.nextPosition - transform.position;
 
         // Map 'worldDeltaPosition' to local space
@@ -117,8 +80,19 @@ public class LocomotionSimpleAgent : MonoBehaviour
         anim.SetBool("move", shouldMove);
         float vx =  velocity.x;
         float vy =  velocity.y;
-        // anim.SetFloat("velx", vx);
-        // anim.SetFloat("vely", vy);
+        if (!run)
+        {
+            // Dump Speed down
+            if(vx > .3f)
+            {
+                vx = .3f;
+            }
+            if (vy > .3f)
+            {
+                vy = .3f;
+            }
+            agent.speed = speed * 1.5f;
+        }
         if (vx < 0.001 | vy < 0.001)
         {
             anim.SetFloat("velx", vx);
@@ -130,7 +104,6 @@ public class LocomotionSimpleAgent : MonoBehaviour
             {
                 anim.SetFloat("velx", vx / Mathf.Abs(vx)  * speed * .3f);
                 anim.SetFloat("vely", vy / Mathf.Abs(vy)  * speed * .3f);
-                agent.speed = speed * 1.5f;
             }
             else
             {
@@ -140,7 +113,8 @@ public class LocomotionSimpleAgent : MonoBehaviour
 
         }
 
-        Debug.Log(speed);
+        Debug.Log(vx);
+        Debug.Log(vy); // At some time speed will wrongly made as 1.5???
 
 
         if (GetComponent<LookAt>() != null)

@@ -16,9 +16,9 @@
 
 - [x] Camera WASD, right click selects, left click acts and wheel zooms (changes world-y up/down) in and out.
   - [x] Get from B2
-- [ ] point-n-click
-- [ ] jump when navigating off-mesh links
-- [ ] Set up speed for characters; Transition form running/walking.
+- [x] point-n-click
+- [x] jump when navigating off-mesh links
+- [x] Set up speed for characters; Transition form running/walking.(Using Checkbox)
 
 
 
