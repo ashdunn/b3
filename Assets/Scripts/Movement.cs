@@ -45,8 +45,8 @@ public class Movement : MonoBehaviour
 
     private void Move(float x, float y)
     {
-        anim.SetFloat("VelX", x);
-        anim.SetFloat("VelY", y);
+        anim.SetFloat("velx", x);
+        anim.SetFloat("vely", y);
 
         moveDirection = new Vector3(0.0f, 0.0f, Input.GetAxis("Vertical"));
         
