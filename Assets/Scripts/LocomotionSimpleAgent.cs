@@ -15,7 +15,9 @@ public class LocomotionSimpleAgent : MonoBehaviour
     private UnityEngine.AI.OffMeshLinkData _currLink;
 
     public Slider slider;
-    public float speed = 10.0f;
+    public Toggle checkbox;
+    public float speed = 5.0f;
+    public bool run = true;
 
     void Start()
     {
@@ -31,6 +33,12 @@ public class LocomotionSimpleAgent : MonoBehaviour
     {
         speed = newValue;
         agent.speed = speed * 5;
+    }
+
+    public void OnRunValueChanged(bool check)
+    {
+        run = check;
+        Debug.Log(check);
     }
 
     void Update()
@@ -118,9 +126,17 @@ public class LocomotionSimpleAgent : MonoBehaviour
         }
         else
         {
+            if (!run)
+            {
+                anim.SetFloat("velx", vx / Mathf.Abs(vx)  * speed * .2f);
+                anim.SetFloat("vely", vy / Mathf.Abs(vy)  * speed * .2f);
+                agent.speed = speed * 2f;
+            }
             anim.SetFloat("velx", vx / Mathf.Abs(vx)  * speed);
             anim.SetFloat("vely", vy / Mathf.Abs(vy)  * speed);
         }
+
+        Debug.Log(speed);
 
 
         if (GetComponent<LookAt>() != null)
