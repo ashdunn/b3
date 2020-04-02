@@ -19,7 +19,7 @@ public class MoveCamera : MonoBehaviour
 
 
     private float distance = 10f;
-    private float yDisp = 0f;
+    private float yDisp = 3f;
     private float xAngle = 30f;
     private float yAngle = 0f;
 
@@ -62,6 +62,9 @@ public class MoveCamera : MonoBehaviour
 
     void FixedUpdate()
     {
-        moveTarget(speed);
+        if (targetObj.CompareTag("MoveMe"))
+        {
+            moveTarget(speed);
+        }
     }
 }
