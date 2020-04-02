@@ -128,12 +128,16 @@ public class LocomotionSimpleAgent : MonoBehaviour
         {
             if (!run)
             {
-                anim.SetFloat("velx", vx / Mathf.Abs(vx)  * speed * .2f);
-                anim.SetFloat("vely", vy / Mathf.Abs(vy)  * speed * .2f);
-                agent.speed = speed * 2f;
+                anim.SetFloat("velx", vx / Mathf.Abs(vx)  * speed * .3f);
+                anim.SetFloat("vely", vy / Mathf.Abs(vy)  * speed * .3f);
+                agent.speed = speed * 1.5f;
             }
-            anim.SetFloat("velx", vx / Mathf.Abs(vx)  * speed);
-            anim.SetFloat("vely", vy / Mathf.Abs(vy)  * speed);
+            else
+            {
+                anim.SetFloat("velx", vx / Mathf.Abs(vx)  * speed);
+                anim.SetFloat("vely", vy / Mathf.Abs(vy)  * speed);
+            }
+
         }
 
         Debug.Log(speed);
