@@ -11,8 +11,6 @@ public class ClickToMove : MonoBehaviour
     private bool move;
     private Vector3 MoveTo;
     public Transform goal;
-    //public Transform agent1;
-    //public Transform agent2;
 
 
     // Start is called before the first frame update
@@ -38,17 +36,6 @@ public class ClickToMove : MonoBehaviour
             agent.destination = MoveTo;
             agent.isStopped = false;
         }
-
-        /*else if (((agent1.position - transform.position).sqrMagnitude < Mathf.Pow(agent.stoppingDistance, 2)) || ((agent2.position - transform.position).sqrMagnitude < Mathf.Pow(agent.stoppingDistance, 2)))
-        {
-            agent.enabled = false;
-            obstacle.enabled = true;
-        }
-        else
-        {
-            obstacle.enabled = false;
-            agent.enabled = true;
-        }*/
 
     }
 
