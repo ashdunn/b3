@@ -25,6 +25,16 @@ public class LocomotionSimpleAgent : MonoBehaviour
 
     void Update()
     {
+        UnityEngine.AI.NavMeshHit hit;
+        int JumpMask = 4; // IDK why, thought it should be 2
+        
+        // Check all areas one length unit ahead.
+        if (!agent.SamplePathPosition(UnityEngine.AI.NavMesh.AllAreas, 0.0F, out hit))
+            if ((hit.mask & JumpMask) != 0) {
+            	// Water detected along the path...
+                Debug.Log("OffMeshLink");
+
+            }
         /*
         if (agent.isOnOffMeshLink)
         {
