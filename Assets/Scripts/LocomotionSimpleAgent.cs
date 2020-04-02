@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
@@ -13,6 +14,9 @@ public class LocomotionSimpleAgent : MonoBehaviour
     private bool _traversingLink;
     private UnityEngine.AI.OffMeshLinkData _currLink;
 
+    public Slider slider;
+    public float speed = 10.0f;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -21,6 +25,12 @@ public class LocomotionSimpleAgent : MonoBehaviour
         agent.updatePosition = false;
 
         //agent.autoTraverseOffMeshLink = false;
+    }
+
+    public void OnValueChanged(float newValue)
+    {
+        speed = newValue;
+        agent.speed = speed * 5;
     }
 
     void Update()
@@ -97,10 +107,21 @@ public class LocomotionSimpleAgent : MonoBehaviour
 
         // Update animation parameters
         anim.SetBool("move", shouldMove);
-        anim.SetFloat("velx", velocity.x);
-        anim.SetFloat("vely", velocity.y);
-        // anim.SetFloat("velx", velocity.x / Mathf.Abs(velocity.x) / 2.0f);
-        // anim.SetFloat("vely", velocity.y / Mathf.Abs(velocity.y) / 2.0f);
+        float vx =  velocity.x;
+        float vy =  velocity.y;
+        // anim.SetFloat("velx", vx);
+        // anim.SetFloat("vely", vy);
+        if (vx < 0.001 | vy < 0.001)
+        {
+            anim.SetFloat("velx", vx);
+            anim.SetFloat("vely", vy);
+        }
+        else
+        {
+            anim.SetFloat("velx", vx / Mathf.Abs(vx)  * speed);
+            anim.SetFloat("vely", vy / Mathf.Abs(vy)  * speed);
+        }
+
 
         if (GetComponent<LookAt>() != null)
         {
