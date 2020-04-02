@@ -38,7 +38,8 @@ public class Movement : MonoBehaviour
             return;
 
         var x = Input.GetAxis("Horizontal");
-        var y = Input.GetAxis("Vertical");
+        float shiftMod = Input.GetKey(KeyCode.LeftShift) ? 1.5f : 1f;
+        var y = Input.GetAxis("Vertical") * shiftMod;
 
         Move(x, y);
     }
@@ -49,7 +50,7 @@ public class Movement : MonoBehaviour
         anim.SetFloat("vely", y);
 
         moveDirection = new Vector3(0.0f, 0.0f, Input.GetAxis("Vertical"));
-        
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             //print("fdjslkfjakfj");
@@ -58,12 +59,12 @@ public class Movement : MonoBehaviour
             rb.AddForce(0, 3, 0);
         }
         else anim.SetFloat("Jump4Blend", 0);
-        
+
         if (moveDirection != Vector3.zero)
             transform.TransformDirection(Vector3.forward);
         transform.Rotate(0, x * RotateSpeed, 0);
 
-        
+
 
         /*
         if (timer > 0.1f)
@@ -86,7 +87,7 @@ public class Movement : MonoBehaviour
             timer += Time.deltaTime;
             rb.AddForce(0, 10000, 0);
         }*/
-           
+
         moveDirection.y -= 20.0f * Time.deltaTime;
 
 
