@@ -14,7 +14,8 @@
 
 ## Part 2 - Animated Navigation (5)
 
-- [ ] Camera WASD, right click selects, left click acts and wheel zooms (changes world-y up/down) in and out.
+- [x] Camera WASD, right click selects, left click acts and wheel zooms (changes world-y up/down) in and out.
+  - [x] Get from B2
 - [ ] point-n-click
 - [ ] jump when navigating off-mesh links
 - [ ] Set up speed for characters; Transition form running/walking.
@@ -23,4 +24,9 @@
 
 ## Part 3 - Crowd (2)
 
-- [ ] 
+Ref: 
+
+https://www.youtube.com/watch?v=blPglabGueM
+
+https://docs.unity3d.com/Manual/nav-CouplingAnimationAndNavigation.html
+
