@@ -27,13 +27,18 @@ public class LocomotionSimpleAgent : MonoBehaviour
     {
         UnityEngine.AI.NavMeshHit hit;
         int JumpMask = 4; // IDK why, thought it should be 2
-        
+
         // Check all areas one length unit ahead.
         if (!agent.SamplePathPosition(UnityEngine.AI.NavMesh.AllAreas, 0.0F, out hit))
-            if ((hit.mask & JumpMask) != 0) {
-            	// Water detected along the path...
+            if ((hit.mask & JumpMask) != 0)
+            {
+                // Water detected along the path...
                 Debug.Log("OffMeshLink");
-
+                anim.SetFloat("Jump4Blend", 1);
+            }
+            else
+            {
+                anim.SetFloat("Jump4Blend", 0);
             }
         /*
         if (agent.isOnOffMeshLink)
@@ -73,37 +78,37 @@ public class LocomotionSimpleAgent : MonoBehaviour
 
         else
         {*/
-            Vector3 worldDeltaPosition = agent.nextPosition - transform.position;
+        Vector3 worldDeltaPosition = agent.nextPosition - transform.position;
 
-            // Map 'worldDeltaPosition' to local space
-            float dx = Vector3.Dot(transform.right, worldDeltaPosition);
-            float dy = Vector3.Dot(transform.forward, worldDeltaPosition);
-            Vector2 deltaPosition = new Vector2(dx, dy);
+        // Map 'worldDeltaPosition' to local space
+        float dx = Vector3.Dot(transform.right, worldDeltaPosition);
+        float dy = Vector3.Dot(transform.forward, worldDeltaPosition);
+        Vector2 deltaPosition = new Vector2(dx, dy);
 
-            // Low-pass filter the deltaMove
-            float smooth = Mathf.Min(1.0f, Time.deltaTime / 0.15f);
-            smoothDeltaPosition = Vector2.Lerp(smoothDeltaPosition, deltaPosition, smooth);
+        // Low-pass filter the deltaMove
+        float smooth = Mathf.Min(1.0f, Time.deltaTime / 0.15f);
+        smoothDeltaPosition = Vector2.Lerp(smoothDeltaPosition, deltaPosition, smooth);
 
-            // Update velocity if time advances
-            if (Time.deltaTime > 1e-5f)
-                velocity = smoothDeltaPosition / Time.deltaTime;
+        // Update velocity if time advances
+        if (Time.deltaTime > 1e-5f)
+            velocity = smoothDeltaPosition / Time.deltaTime;
 
-            bool shouldMove = velocity.magnitude > 0.5f && agent.remainingDistance > agent.radius;
+        bool shouldMove = velocity.magnitude > 0.5f && agent.remainingDistance > agent.radius;
 
-            // Update animation parameters
-            anim.SetBool("move", shouldMove);
-            anim.SetFloat("velx", velocity.x);
-            anim.SetFloat("vely", velocity.y);
+        // Update animation parameters
+        anim.SetBool("move", shouldMove);
+        anim.SetFloat("velx", velocity.x);
+        anim.SetFloat("vely", velocity.y);
 
-            if (GetComponent<LookAt>() != null)
-            {
-                LookAt lookAt = GetComponent<LookAt>();
-                if (lookAt)
-                    lookAt.lookAtTargetPosition = agent.steeringTarget + transform.forward;
-            }
+        if (GetComponent<LookAt>() != null)
+        {
+            LookAt lookAt = GetComponent<LookAt>();
+            if (lookAt)
+                lookAt.lookAtTargetPosition = agent.steeringTarget + transform.forward;
+        }
 
-            if (worldDeltaPosition.magnitude > agent.radius)
-                transform.position = agent.nextPosition - 0.9f * worldDeltaPosition;
+        if (worldDeltaPosition.magnitude > agent.radius)
+            transform.position = agent.nextPosition - 0.9f * worldDeltaPosition;
         //}
     }
 
