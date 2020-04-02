@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour
 
     private Animator anim;
     private Rigidbody rb;
-    CharacterController controller;
+    // CharacterController controller;
     private Vector3 moveDirection = Vector3.zero;
 
     public float MoveSpeed = 3;
@@ -27,7 +27,7 @@ public class Movement : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-        controller = GetComponent<CharacterController>();
+        // controller = GetComponent<CharacterController>();
         timer = 0;
     }
 
@@ -49,7 +49,7 @@ public class Movement : MonoBehaviour
         anim.SetFloat("velx", x);
         anim.SetFloat("vely", y);
 
-        moveDirection = new Vector3(0.0f, 0.0f, Input.GetAxis("Vertical"));
+        // moveDirection = new Vector3(0.0f, 0.0f, Input.GetAxis("Vertical"));
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -60,9 +60,9 @@ public class Movement : MonoBehaviour
         }
         else anim.SetFloat("Jump4Blend", 0);
 
-        if (moveDirection != Vector3.zero)
-            transform.TransformDirection(Vector3.forward);
-        transform.Rotate(0, x * RotateSpeed, 0);
+        // if (moveDirection != Vector3.zero)
+        //     transform.TransformDirection(Vector3.forward);
+        // transform.Rotate(0, x * RotateSpeed, 0);
 
 
 
@@ -88,10 +88,10 @@ public class Movement : MonoBehaviour
             rb.AddForce(0, 10000, 0);
         }*/
 
-        moveDirection.y -= 20.0f * Time.deltaTime;
+        // moveDirection.y -= 20.0f * Time.deltaTime;
 
 
-        controller.Move(moveDirection * Time.deltaTime);
+        // controller.Move(moveDirection * Time.deltaTime);
 
 
         /*

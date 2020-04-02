@@ -22,6 +22,7 @@ public class MoveCamera : MonoBehaviour
     private float yDisp = 3f;
     private float xAngle = 30f;
     private float yAngle = 0f;
+    private float yAnglePrev = 0f;
 
     private float getAxis(string axis)
     {
@@ -42,6 +43,7 @@ public class MoveCamera : MonoBehaviour
             distance = diff.magnitude;
             xAngle = transform.eulerAngles.x;
             yAngle = transform.eulerAngles.y;
+            yAnglePrev = transform.eulerAngles.y;
         }
     }
 
@@ -51,7 +53,12 @@ public class MoveCamera : MonoBehaviour
         {
             distance -= Input.mouseScrollDelta.y * zoomRate * Time.deltaTime;
             xAngle -= getAxis("JK") * pitchRate;
-            yAngle += getAxis("HL") * panRate;
+            // yAngle += getAxis("HL") * panRate;
+            if (Mathf.Abs(yAnglePrev - targetObj.transform.eulerAngles.y) > 1.0f)
+                yAngle = targetObj.transform.eulerAngles.y;
+            // print(yAnglePrev - yAngle);
+            yAnglePrev = targetObj.transform.eulerAngles.y;
+            // yAngle += Input.GetAxis("Horizontal");
 
             Quaternion rot = Quaternion.Euler(xAngle, yAngle, 0);
             Vector3 point = rot * Vector3.forward;
