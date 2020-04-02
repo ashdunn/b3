@@ -40,6 +40,7 @@ public class ClickToMove : MonoBehaviour
         // }
 
         Vector3 hTrans = transform.position - vert(transform.position.y);
+        print(hTrans + ", " + hDest);
         if ((hDest - hTrans).sqrMagnitude <= pow2(agent.stoppingDistance))
         {
             move = false;
@@ -99,9 +100,9 @@ public class ClickToMove : MonoBehaviour
     {
         GameObject other = coll.gameObject;
         // print(coll + ", " + other);
-        print(other.GetComponent<ClickToMove>());
-        // if (canMove() && other.CompareTag("Agent"))
-        print(getDestination(other) + ", " + getDestination() + ", " + !canMove(other));
+        // print(other.GetComponent<ClickToMove>());
+        if (canMove() && other.CompareTag("Agent"))
+            print(getDestination(other) + ", " + getDestination() + ", " + !canMove(other));
         if (canMove() && other.CompareTag("Agent") && getDestination(other) == getDestination() && !canMove(other))
         {
             move = false;
