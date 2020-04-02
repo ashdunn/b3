@@ -24,7 +24,9 @@
 
 ## Part 3 - Crowd (2)
 
-Ref: 
+- [x] Map
+- [x] 10 agents
+- [ ] On play, at the main scene, agents start in a “room” like location and evacuate through at most 3 different exists to a given point (this is defined before starting the simulation)
 
 https://www.youtube.com/watch?v=blPglabGueM
 
