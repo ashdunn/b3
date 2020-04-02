@@ -2,9 +2,9 @@
 ## Part 1 - Animation (7)
 
 - [x] Walk forward and backwards. Turn while walking forward. Turn in place. Strafe / Turn while walking backwards
-  -- Use WASD to move 
+  -[] Use WASD to move 
 - [x] Run. Turn while running forward.
-  -- Hold shift with W to run
+  -[] Hold shift with W to run
 - [x] Jump while running, walking and standing.
   - [ ] Always jumps forward
 - [x] Turn on the spot
