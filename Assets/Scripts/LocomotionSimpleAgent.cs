@@ -16,7 +16,7 @@ public class LocomotionSimpleAgent : MonoBehaviour
 
     public Slider slider;
     public Toggle checkbox;
-    public float speed = 5.0f;
+    public float speed = 1.0f;
     public bool run = true;
 
     void Start()
@@ -93,6 +93,7 @@ public class LocomotionSimpleAgent : MonoBehaviour
             }
             agent.speed = speed * 1.5f;
         }
+        
         if (vx < 0.001 | vy < 0.001)
         {
             anim.SetFloat("velx", vx);
@@ -107,14 +108,24 @@ public class LocomotionSimpleAgent : MonoBehaviour
             }
             else
             {
-                anim.SetFloat("velx", vx / Mathf.Abs(vx)  * speed);
-                anim.SetFloat("vely", vy / Mathf.Abs(vy)  * speed);
+                // Dump Speed down
+                if(vx < .5f)
+                {
+                    vx = .5f;
+                }
+                if (vy < .5f)
+                {
+                    vy = .5f;
+                }
+                agent.speed = speed * 5f;
+
+                anim.SetFloat("velx", vx);
+                anim.SetFloat("vely", vy);
             }
 
         }
-
         Debug.Log(vx);
-        Debug.Log(vy); // At some time speed will wrongly made as 1.5???
+        Debug.Log(vy);
 
 
         if (GetComponent<LookAt>() != null)
