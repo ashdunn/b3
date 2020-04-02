@@ -99,6 +99,8 @@ public class LocomotionSimpleAgent : MonoBehaviour
         anim.SetBool("move", shouldMove);
         anim.SetFloat("velx", velocity.x);
         anim.SetFloat("vely", velocity.y);
+        // anim.SetFloat("velx", velocity.x / Mathf.Abs(velocity.x) / 2.0f);
+        // anim.SetFloat("vely", velocity.y / Mathf.Abs(velocity.y) / 2.0f);
 
         if (GetComponent<LookAt>() != null)
         {
