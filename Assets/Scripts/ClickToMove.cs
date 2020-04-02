@@ -1,70 +1,126 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Util;
 
 public class ClickToMove : MonoBehaviour
 {
 
-    private UnityEngine.AI.NavMeshAgent agent;
-    //private UnityEngine.AI.NavMeshObstacle obstacle;
-    private bool selected;
-    private bool move;
-    private Vector3 MoveTo;
     public Transform goal;
-    //public Transform agent1;
-    //public Transform agent2;
 
+    private UnityEngine.AI.NavMeshAgent agent;
+    private bool move;
+    private Vector3 hDest;
 
-    // Start is called before the first frame update
+    public GameObject enemy = null;
+    public float runDist = 4.0f;
+    private Vector3 realDest;
+    private bool changed = false;
+
+    public void setMove(bool canMove)
+    {
+        move = canMove;
+    }
+
+    public bool canMove()
+    {
+        return move;
+    }
+
+    private bool canMove(GameObject go)
+    {
+        return go.GetComponent<ClickToMove>().canMove();
+    }
+
+    public void setDestination(Vector3 d)
+    {
+        agent.destination = d;
+        hDest = d - vert(d.y);
+        move = true;
+    }
+
+    public Vector3 getDestination()
+    {
+        return agent.destination;
+    }
+
+    private Vector3 getDestination(GameObject go)
+    {
+        return go.GetComponent<ClickToMove>().getDestination();
+    }
+
     void Start()
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        //obstacle = GetComponent<UnityEngine.AI.NavMeshObstacle>();
-        selected = false;
-        move = true;
-        agent.destination = goal.position;
-
-        //obstacle.enabled = false;
+        setDestination(goal.position);
         agent.enabled = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (selected && move)
+        Vector3 hTrans = transform.position - vert(transform.position.y);
+
+        float enemyDist = 100000000000;
+        if (enemy != null)
         {
-            //obstacle.enabled = false;
-            agent.enabled = true;
-            agent.destination = MoveTo;
-            agent.isStopped = false;
+            enemyDist = Vector3.Distance(transform.position, enemy.transform.position);
         }
 
-        /*else if (((agent1.position - transform.position).sqrMagnitude < Mathf.Pow(agent.stoppingDistance, 2)) || ((agent2.position - transform.position).sqrMagnitude < Mathf.Pow(agent.stoppingDistance, 2)))
+        if ((hDest - hTrans).sqrMagnitude <= pow2(agent.stoppingDistance))
         {
-            agent.enabled = false;
-            obstacle.enabled = true;
+            move = false;
+        }
+
+        if (enemyDist < runDist)
+        {
+            Vector3 dirToEnemy = transform.position - enemy.transform.position;
+            Vector3 newPos = transform.position + dirToEnemy * 3.0f;
+            if (!changed)
+            {
+                realDest = getDestination();
+                setDestination(newPos);
+                changed = true;
+            }
+
+            agent.isStopped = false;
+
+            // print("real dest: ");
+            // print(realDest);
+        }
+        else if (changed)
+        {
+            setDestination(realDest);
+            changed = false;
+        }
+
+
+        if (move)
+        {
+            // agent.enabled = true;
+            agent.isStopped = false;
+
+
         }
         else
         {
-            obstacle.enabled = false;
-            agent.enabled = true;
-        }*/
+            // agent.enabled = false;
+            agent.isStopped = true;
+        }
 
     }
 
-    public void Select()
+
+    void OnTriggerEnter(Collider coll)
     {
-        selected = true;
+        GameObject other = coll.gameObject;
+        // print(collider + ", " + other);
+        // print(other.GetComponent<ClickToMove>());
+        // if (canMove() && other.CompareTag("Agent"))
+        // print(getDestination(other) + ", " + getDestination() + ", " + !canMove(other));
+        if (canMove() && other.CompareTag("Agent") && getDestination(other) == getDestination() && !canMove(other))
+        {
+            move = false;
+        }
     }
 
-    public void Deselect()
-    {
-        selected = false;
-    }
-
-    public void Destination(Vector3 d)
-    {
-        MoveTo = d;
-        move = true;
-    }
 }
