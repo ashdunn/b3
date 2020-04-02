@@ -37,8 +37,6 @@
         </e>
         <e p="PlayerController.cs" t="Include" />
         <e p="Scripts" t="Include">
-          <e p="AstarPath.cs" t="Include" />
-          <e p="AutoMovingObstacle.cs" t="Include" />
           <e p="CameraMover.cs" t="Include" />
           <e p="ClickToMove.cs" t="Include" />
           <e p="Curves" t="Include">
@@ -53,13 +51,10 @@
             <e p="QuadBezierCurve.cs" t="Include" />
           </e>
           <e p="DirectorScript.cs" t="Include" />
-          <e p="dMoverScript.cs" t="Include" />
           <e p="LocomotionSimpleAgent.cs" t="Include" />
           <e p="LookAt.cs" t="Include" />
-          <e p="Map.cs" t="Include" />
           <e p="MoveCamera.cs" t="Include" />
           <e p="Movement.cs" t="Include" />
-          <e p="MovingObstacles.cs" t="Include" />
           <e p="Selector.cs" t="Include" />
           <e p="Util.cs" t="Include" />
         </e>
