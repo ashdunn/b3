@@ -17,7 +17,28 @@
             <e p="QuadBezierCurveInspector.cs" t="Include" />
           </e>
         </e>
+        <e p="NavMeshComponents" t="Include">
+          <e p="Editor" t="Include">
+            <e p="NavMeshAssetManager.cs" t="Include" />
+            <e p="NavMeshComponentsEditor.asmdef" t="Include" />
+            <e p="NavMeshComponentsGUIUtility.cs" t="Include" />
+            <e p="NavMeshLinkEditor.cs" t="Include" />
+            <e p="NavMeshModifierEditor.cs" t="Include" />
+            <e p="NavMeshModifierVolumeEditor.cs" t="Include" />
+            <e p="NavMeshSurfaceEditor.cs" t="Include" />
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="NavMeshComponents.asmdef" t="Include" />
+            <e p="NavMeshLink.cs" t="Include" />
+            <e p="NavMeshModifier.cs" t="Include" />
+            <e p="NavMeshModifierVolume.cs" t="Include" />
+            <e p="NavMeshSurface.cs" t="Include" />
+          </e>
+        </e>
+        <e p="PlayerController.cs" t="Include" />
         <e p="Scripts" t="Include">
+          <e p="AstarPath.cs" t="Include" />
+          <e p="AutoMovingObstacle.cs" t="Include" />
           <e p="CameraMover.cs" t="Include" />
           <e p="ClickToMove.cs" t="Include" />
           <e p="Curves" t="Include">
@@ -32,11 +53,25 @@
             <e p="QuadBezierCurve.cs" t="Include" />
           </e>
           <e p="DirectorScript.cs" t="Include" />
+          <e p="dMoverScript.cs" t="Include" />
           <e p="LocomotionSimpleAgent.cs" t="Include" />
           <e p="LookAt.cs" t="Include" />
+          <e p="Map.cs" t="Include" />
+          <e p="MoveCamera.cs" t="Include" />
           <e p="Movement.cs" t="Include" />
+          <e p="MovingObstacles.cs" t="Include" />
+          <e p="Selector.cs" t="Include" />
+          <e p="Util.cs" t="Include" />
         </e>
         <e p="Standard Assets" t="Include">
+          <e p="Effects" t="Include">
+            <e p="ToonShading" t="Include">
+              <e p="Shaders" t="Include">
+                <e p="ToonBasic.shader" t="Include" />
+                <e p="ToonBasicOutline.shader" t="Include" />
+              </e>
+            </e>
+          </e>
           <e p="Environment" t="Include">
             <e p="Water" t="Include">
               <e p="Water" t="Include">
@@ -74,6 +109,8 @@
         </e>
       </e>
       <e p="b3.sln" t="IncludeFlat" />
+      <e p="NavMeshComponents.csproj" t="IncludeRecursive" />
+      <e p="NavMeshComponentsEditor.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
       <e p="Temp\bin" t="ExcludeRecursive" />
