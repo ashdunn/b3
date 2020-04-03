@@ -16,9 +16,10 @@
 ## Part 2 - Animated Navigation (5)
 
 - [x] Camera uses WASD, Q, E, R, F, left click free turns, and wheel zooms (changes world-y up/down) in and out.
-- [x] Click to move - click anywhere to set destination
-- [x] jump when navigating off-mesh links
-- [x] Set up speed for characters; Transition form running/walking.(Using Checkbox)
+- [x] Click to move - click character to select, then click point on ground as destination
+- [x] Jump when navigating off-mesh links
+- [x] Set up speed for characters; Transition form running/walking
+  - [x] Hold shift while the character is moving to run
 
 
 
