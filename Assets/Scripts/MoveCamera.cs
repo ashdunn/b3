@@ -67,11 +67,11 @@ public class MoveCamera : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
-    {
-        if (targetObj.CompareTag("MoveMe"))
-        {
-            moveTarget(speed);
-        }
-    }
+    // void FixedUpdate()
+    // {
+    //     if (targetObj.CompareTag("MoveMe"))
+    //     {
+    //         moveTarget(speed);
+    //     }
+    // }
 }
