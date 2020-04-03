@@ -78,55 +78,17 @@ public class LocomotionSimpleAgent : MonoBehaviour
 
         // Update animation parameters
         anim.SetBool("move", shouldMove);
-        float vx =  velocity.x;
-        float vy =  velocity.y;
-        if (!run)
-        {
-            // Dump Speed down
-            if(vx > .3f)
-            {
-                vx = .3f;
-            }
-            if (vy > .3f)
-            {
-                vy = .3f;
-            }
-            agent.speed = speed * 1.5f;
-        }
+        anim.SetFloat("velx", velocity.x);
         
-        if (vx < 0.001 | vy < 0.001)
-        {
-            anim.SetFloat("velx", vx);
-            anim.SetFloat("vely", vy);
-        }
+        float shiftMod = Input.GetKey(KeyCode.LeftShift) ? 1.5f : 1f;
+        float y = 0;
+        if (velocity.y > 0.5)
+            y = shiftMod;
         else
         {
-            if (!run)
-            {
-                anim.SetFloat("velx", vx / Mathf.Abs(vx)  * speed * .3f);
-                anim.SetFloat("vely", vy / Mathf.Abs(vy)  * speed * .3f);
-            }
-            else
-            {
-                // Dump Speed down
-                if(vx < .5f)
-                {
-                    vx = .5f;
-                }
-                if (vy < .5f)
-                {
-                    vy = .5f;
-                }
-                agent.speed = speed * 5f;
-
-                anim.SetFloat("velx", vx);
-                anim.SetFloat("vely", vy);
-            }
-
+            y = velocity.y;
         }
-        Debug.Log(vx);
-        Debug.Log(vy);
-
+        anim.SetFloat("vely", y);
 
         if (GetComponent<LookAt>() != null)
         {
